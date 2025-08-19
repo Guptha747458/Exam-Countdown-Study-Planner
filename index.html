@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Exam Countdown & Study Planner</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  <script>
+    mermaid.initialize({ startOnLoad: false });
+  </script>
+  <link rel="icon" href="data:,">
+</head>
+<body>
+  <h1>📚 Exam Countdown & Study Planner</h1>
+  <div class="container">
+    <label for="examName">Exam Name:</label>
+    <input type="text" id="examName" placeholder="e.g., Final Exams" />
+
+    <label for="examDate">Exam Date:</label>
+    <input type="date" id="examDate" />
+
+    <label for="topics">Study Topics (comma-separated):</label>
+    <input type="text" id="topics" placeholder="e.g., Math, Physics, Chemistry" />
+
+    <label for="subTopics">Sub-topics (comma-separated):</label>
+    <input type="text" id="subTopics" placeholder="e.g., Algebra, Optics, Organic" />
+
+    <label for="topicTime">Study Time per Topic (e.g., 2h):</label>
+    <input type="text" id="topicTime" placeholder="e.g., 2h" />
+
+    <label for="subTopicTime">Study Time per Sub-topic (e.g., 1h):</label>
+    <input type="text" id="subTopicTime" placeholder="e.g., 1h" />
+
+    <button onclick="savePlan()">Add Exam</button>
+    <button onclick="showPreviousPlans()">Show Previous Plans</button>
+
+    <div id="flowchart">
+        <h3>📈 Study Plan Flowchart</h3>
+        <div id="mermaidChart">
+            <!-- Mermaid diagram will be injected here -->
+          </div>
+      </div>
+
+    <div id="previousPlans">
+      <h3>🗂️ Previous Study Plans</h3>
+      <!-- Previous plans will be listed here -->
+    </div>
+  </div>
+  <script>
+    mermaid.initialize({
+      startOnLoad: false,
+      theme: "default",
+      themeVariables: {
+        fontSize: "16px"
+      }
+    });
+  
+    mermaid.mermaidAPI.render("dummy", "graph TD", () => {}); // Force load
+  
+    mermaid.mermaidAPI.setConfig({
+      flowchart: {
+        useMaxWidth: true,
+        htmlLabels: true
+      },
+      themeCSS: `
+        .node.title rect { fill: #3498db; stroke: #2980b9; }
+        .node.high rect { fill: #e74c3c; stroke: #c0392b; }
+        .node.medium rect { fill: #f39c12; stroke: #d35400; }
+        .node.low rect { fill: #2ecc71; stroke: #27ae60; }
+      `
+    });
+  </script>
+  <script src="script.js"></script>
+</body>
+</html>
