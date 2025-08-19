@@ -36,41 +36,16 @@
     <button onclick="showPreviousPlans()">Show Previous Plans</button>
 
     <div id="flowchart">
-        <h3>📈 Study Plan Flowchart</h3>
-        <div id="mermaidChart">
-            <!-- Mermaid diagram will be injected here -->
-          </div>
-      </div>
+      <h3>📈 Study Plan Flowchart</h3>
+      <div id="mermaidChart"></div>
+    </div>
 
     <div id="previousPlans">
       <h3>🗂️ Previous Study Plans</h3>
-      <!-- Previous plans will be listed here -->
+      <ul id="previousPlansList"></ul>
     </div>
   </div>
-  <script>
-    mermaid.initialize({
-      startOnLoad: false,
-      theme: "default",
-      themeVariables: {
-        fontSize: "16px"
-      }
-    });
-  
-    mermaid.mermaidAPI.render("dummy", "graph TD", () => {}); // Force load
-  
-    mermaid.mermaidAPI.setConfig({
-      flowchart: {
-        useMaxWidth: true,
-        htmlLabels: true
-      },
-      themeCSS: `
-        .node.title rect { fill: #3498db; stroke: #2980b9; }
-        .node.high rect { fill: #e74c3c; stroke: #c0392b; }
-        .node.medium rect { fill: #f39c12; stroke: #d35400; }
-        .node.low rect { fill: #2ecc71; stroke: #27ae60; }
-      `
-    });
-  </script>
+
   <script src="script.js"></script>
 </body>
 </html>
